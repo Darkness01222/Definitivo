@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD con Node.js y MySQL</title>
+</head>
+<body>
+    <h1>CRUD con Node.js y MySQL</h1>
+
+    <h2>Crear nuevo item</h2>
+    <form action="/create" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" name="descripcion" required>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" required>
+        <input type="submit" value="Crear">
+    </form>
+
+    <h2>Items almacenados</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+        <% items.forEach(item => { %>
+            <tr>
+                <td><%= item.id %></td>
+                <td><%= item.nombre %></td>
+                <td><%= item.descripcion %></td>
+                <td><%= item.cantidad %></td>
+                <td>
+                    <a href="/delete/<%= item.id %>">Eliminar</a>
+                    <a href="/edit/<%= item.id %>">Editar</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
